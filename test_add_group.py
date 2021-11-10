@@ -17,18 +17,30 @@ class test_add_group(unittest.TestCase):
 
     def test_test_add_group(self):
         wd = self.wd
+        self.open_page(wd)
+        self.login(wd)
+        self.create_group(wd)
+        self.logout(wd)
+
+    def open_page(self, wd):
         wd.get("http://lab/addressbook/")
-        wd.find_element(By.NAME, "user").send_keys("admin")
-        wd.find_element(By.NAME, "pass").send_keys("secret")
-        wd.find_element(By.XPATH, "//input[@value='Login']").click()
+
+    def logout(self, wd):
+        wd.find_element(By.LINK_TEXT, "Logout").click()
+
+    def create_group(self, wd):
         wd.find_element(By.LINK_TEXT, "groups").click()
         wd.find_element(By.NAME, "new").click()
         wd.find_element(By.NAME, "group_name").send_keys("GRNAME")
         wd.find_element(By.NAME, "group_header").send_keys("GRHEADER")
         wd.find_element(By.NAME, "group_footer").send_keys("HRFOOTER")
         wd.find_element(By.NAME, "submit").click()
-        wd.find_element(By.LINK_TEXT, "Logout").click()
-    
+
+    def login(self, wd):
+        wd.find_element(By.NAME, "user").send_keys("admin")
+        wd.find_element(By.NAME, "pass").send_keys("secret")
+        wd.find_element(By.XPATH, "//input[@value='Login']").click()
+
     def is_element_present(self, how, what):
         try: 
             self.wd.find_element(by=how, value=what)
