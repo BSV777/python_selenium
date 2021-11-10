@@ -4,10 +4,22 @@ from selenium.webdriver.common.by import By
 import unittest
 from group import Group
 
+
 class TestAddGroup(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
+
+    def open_page(self, wd):
+        wd.get("http://lab/addressbook/")
+
+    def login(self, wd, username, password):
+        wd.find_element(By.NAME, "user").send_keys(username)
+        wd.find_element(By.NAME, "pass").send_keys(password)
+        wd.find_element(By.XPATH, "//input[@value='Login']").click()
+
+    def logout(self, wd):
+        wd.find_element(By.LINK_TEXT, "Logout").click()
 
     def test_add_group(self):
         wd = self.wd
@@ -23,12 +35,6 @@ class TestAddGroup(unittest.TestCase):
         self.create_group(wd, Group(name="", header="", footer=""))
         self.logout(wd)
 
-    def open_page(self, wd):
-        wd.get("http://lab/addressbook/")
-
-    def logout(self, wd):
-        wd.find_element(By.LINK_TEXT, "Logout").click()
-
     def create_group(self, wd, group):
         wd.find_element(By.LINK_TEXT, "groups").click()
         wd.find_element(By.NAME, "new").click()
@@ -36,11 +42,6 @@ class TestAddGroup(unittest.TestCase):
         wd.find_element(By.NAME, "group_header").send_keys(group.header)
         wd.find_element(By.NAME, "group_footer").send_keys(group.footer)
         wd.find_element(By.NAME, "submit").click()
-
-    def login(self, wd, username, password):
-        wd.find_element(By.NAME, "user").send_keys(username)
-        wd.find_element(By.NAME, "pass").send_keys(password)
-        wd.find_element(By.XPATH, "//input[@value='Login']").click()
 
     def tearDown(self):
         self.wd.quit()
