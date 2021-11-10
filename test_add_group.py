@@ -10,35 +10,24 @@ import time
 import re
 
 
-class TestAddGroup(unittest.TestCase):
+class test_add_group(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    def test_untitled_test_case(self):
+    def test_test_add_group(self):
         wd = self.wd
         wd.get("http://lab/addressbook/")
-        # wd.find_element("user").click()
-        # wd.find_element("user").clear()
-        wd.find_element("user").send_keys("admin")
-        # wd.find_element("pass").clear()
-        wd.find_element("pass").send_keys("secret")
-        wd.find_element("//input[@value='Login']").click()
-        wd.find_element("groups").click()
-        wd.find_element("new").click()
-        wd.find_element("group_name").click()
-        # wd.find_element("group_name").clear()
-        wd.find_element("group_name").send_keys("grname")
-        # wd.find_element("group_header").click()
-        wd.find_element("group_name").click()
-        wd.find_element("group_name").clear()
-        wd.find_element("group_name").send_keys("GRNAME")
-        wd.find_element("group_header").clear()
-        wd.find_element("group_header").send_keys("GRHEADER")
-        wd.find_element("group_footer").clear()
-        wd.find_element("group_footer").send_keys("HRFOOTER")
-        wd.find_element("submit").click()
-        wd.find_element("Logout").click()
+        wd.find_element(By.NAME, "user").send_keys("admin")
+        wd.find_element(By.NAME, "pass").send_keys("secret")
+        wd.find_element(By.XPATH, "//input[@value='Login']").click()
+        wd.find_element(By.LINK_TEXT, "groups").click()
+        wd.find_element(By.NAME, "new").click()
+        wd.find_element(By.NAME, "group_name").send_keys("GRNAME")
+        wd.find_element(By.NAME, "group_header").send_keys("GRHEADER")
+        wd.find_element(By.NAME, "group_footer").send_keys("HRFOOTER")
+        wd.find_element(By.NAME, "submit").click()
+        wd.find_element(By.LINK_TEXT, "Logout").click()
     
     def is_element_present(self, how, what):
         try: 
