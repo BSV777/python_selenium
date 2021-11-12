@@ -3,14 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 import unittest
-from contact import Contact
-
-
-class ContactDate:
-    def __init__(self, day, month, year):
-        self.day = day
-        self.month = month
-        self.year = year
+#from contact import Contact
+import models
 
 
 class TestAddContact(unittest.TestCase):
@@ -35,11 +29,12 @@ class TestAddContact(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.create_contact(wd, Contact(firstname="test", middlename="test", lastname="test", 
                                         nickname="test", title="test", company="test",
-                                        address="test", home="test", mobile="test", work="test",
-                                        fax="test", email="test", email2="test", email3="test",
-                                        homepage="test", bdate=ContactDate(1, "January", 2001),
-                                        adate=ContactDate(2, "February", 2002), address2="test",
-                                        phone2="test", notes="test"))
+                                        address="test", homephone="test", mobilephone="test", 
+                                        workphone="test", fax="test", email="test", email2="test",
+                                        email3="test", homepage="test", 
+                                        bdate=ContactDate(1, "January", 2001),
+                                        adate=ContactDate(2, "February", 2002),
+                                        address2="test", phone2="test", notes="test"))
         self.logout(wd)
 
     def create_contact(self, wd, contact):
@@ -51,9 +46,9 @@ class TestAddContact(unittest.TestCase):
         wd.find_element(By.NAME, "title").send_keys(contact.title)
         wd.find_element(By.NAME, "company").send_keys(contact.company)
         wd.find_element(By.NAME, "address").send_keys(contact.address)
-        wd.find_element(By.NAME, "home").send_keys(contact.home)
-        wd.find_element(By.NAME, "mobile").send_keys(contact.mobile)
-        wd.find_element(By.NAME, "work").send_keys(contact.work)
+        wd.find_element(By.NAME, "homephone").send_keys(contact.homephone)
+        wd.find_element(By.NAME, "mobilephone").send_keys(contact.mobilephone)
+        wd.find_element(By.NAME, "workphone").send_keys(contact.workphone)
         wd.find_element(By.NAME, "fax").send_keys(contact.fax)
         wd.find_element(By.NAME, "email").send_keys(contact.email)
         wd.find_element(By.NAME, "email2").send_keys(contact.email2)

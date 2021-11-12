@@ -2,8 +2,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import unittest
-from group import Group
-
+#from group import Group
+import models
 
 class TestAddGroup(unittest.TestCase):
     def setUp(self):
