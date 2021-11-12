@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 import unittest
 #from contact import Contact
-import models
+from models import *
 
 
 class TestAddContact(unittest.TestCase):
@@ -46,9 +46,9 @@ class TestAddContact(unittest.TestCase):
         wd.find_element(By.NAME, "title").send_keys(contact.title)
         wd.find_element(By.NAME, "company").send_keys(contact.company)
         wd.find_element(By.NAME, "address").send_keys(contact.address)
-        wd.find_element(By.NAME, "homephone").send_keys(contact.homephone)
-        wd.find_element(By.NAME, "mobilephone").send_keys(contact.mobilephone)
-        wd.find_element(By.NAME, "workphone").send_keys(contact.workphone)
+        wd.find_element(By.NAME, "home").send_keys(contact.homephone)
+        wd.find_element(By.NAME, "mobile").send_keys(contact.mobilephone)
+        wd.find_element(By.NAME, "work").send_keys(contact.workphone)
         wd.find_element(By.NAME, "fax").send_keys(contact.fax)
         wd.find_element(By.NAME, "email").send_keys(contact.email)
         wd.find_element(By.NAME, "email2").send_keys(contact.email2)
