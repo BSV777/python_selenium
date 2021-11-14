@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #from selenium import webdriver
 #from selenium.webdriver.common.by import By
-import unittest
+#import unittest
 import pytest
 from models import *
 from application import Application
