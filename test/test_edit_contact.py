@@ -1,5 +1,5 @@
-from models import Contact
-from models import ContactDate
+from model import Contact
+from model import ContactDate
 
 
 def test_edit_first_contact(app):
