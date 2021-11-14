@@ -14,8 +14,7 @@ def app(request):
     return fixture
 
 def test_add_contact(app):
-    app.open_page()
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.create_contact(Contact(firstname="test", middlename="test", lastname="test",
                                     nickname="test", title="test", company="test",
                                     address="test", homephone="test", mobilephone="test",
@@ -24,4 +23,4 @@ def test_add_contact(app):
                                     bdate=ContactDate(1, "January", 2001),
                                     adate=ContactDate(2, "February", 2002),
                                     address2="test", phone2="test", notes="test"))
-    app.logout()
+    app.session.logout()
