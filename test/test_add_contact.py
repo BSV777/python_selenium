@@ -5,7 +5,7 @@
 #import unittest
 import pytest
 from models import *
-from application import Application
+from fixture.application import Application
 
 @pytest.fixture
 def app(request):
