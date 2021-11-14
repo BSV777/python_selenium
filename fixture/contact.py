@@ -5,6 +5,14 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
+    def open_contacts_page(self):
+        wd = self.app.wd
+        wd.find_element(By.LINK_TEXT, "home").click()
+
+    def return_to_contacts_page(self):
+        wd = self.app.wd
+        wd.find_element(By.LINK_TEXT, "group page").click()
+
     def create(self, contact):
         wd = self.app.wd
         wd.find_element(By.LINK_TEXT, "add new").click()
@@ -33,3 +41,21 @@ class ContactHelper:
         wd.find_element(By.NAME, "phone2").send_keys(contact.phone2)
         wd.find_element(By.NAME, "notes").send_keys(contact.notes)
         wd.find_element(By.XPATH, "//div[@id='content']/form/input[21]").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        self.open_contacts_page()
+        # select first contact
+        wd.find_element(By.NAME, "selected[]").click()
+        # submit deletion
+        wd.find_element(By.NAME, "Delete").click()
+        wd.switch_to.alert.accept()
+        self.return_to_contacts_page()
+
+    def edit_first_contact(self, contact):
+        wd = self.app.wd
+        self.open_contacts_page()
+        # select first group
+        wd.find_element(By.NAME, "selected[]").click()
+        wd.find_element(By.NAME, "Edit").click()
+        self.return_to_contacts_page()
