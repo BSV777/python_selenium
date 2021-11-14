@@ -11,22 +11,25 @@ class TestAddContact(unittest.TestCase):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    def open_page(self, wd):
+    def open_page(self):
+        wd = self.wd
         wd.get("http://lab/addressbook/")
 
-    def login(self, wd, username, password):
+    def login(self, username, password):
+        wd = self.wd
         wd.find_element(By.NAME, "user").send_keys(username)
         wd.find_element(By.NAME, "pass").send_keys(password)
         wd.find_element(By.XPATH, "//input[@value='Login']").click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, "Logout").click()
 
     def test_add_contact(self):
         wd = self.wd
-        self.open_page(wd)
-        self.login(wd, username="admin", password="secret")
-        self.create_contact(wd, Contact(firstname="test", middlename="test", lastname="test", 
+        self.open_page()
+        self.login(username="admin", password="secret")
+        self.create_contact(Contact(firstname="test", middlename="test", lastname="test",
                                         nickname="test", title="test", company="test",
                                         address="test", homephone="test", mobilephone="test", 
                                         workphone="test", fax="test", email="test", email2="test",
@@ -34,9 +37,10 @@ class TestAddContact(unittest.TestCase):
                                         bdate=ContactDate(1, "January", 2001),
                                         adate=ContactDate(2, "February", 2002),
                                         address2="test", phone2="test", notes="test"))
-        self.logout(wd)
+        self.logout()
 
-    def create_contact(self, wd, contact):
+    def create_contact(self, contact):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, "add new").click()
         wd.find_element(By.NAME, "firstname").send_keys(contact.firstname)
         wd.find_element(By.NAME, "middlename").send_keys(contact.middlename)

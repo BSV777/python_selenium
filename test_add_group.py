@@ -9,32 +9,36 @@ class TestAddGroup(unittest.TestCase):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
-    def open_page(self, wd):
+    def open_page(self):
+        wd = self.wd
         wd.get("http://lab/addressbook/")
 
-    def login(self, wd, username, password):
+    def login(self, username, password):
+        wd = self.wd
         wd.find_element(By.NAME, "user").send_keys(username)
         wd.find_element(By.NAME, "pass").send_keys(password)
         wd.find_element(By.XPATH, "//input[@value='Login']").click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, "Logout").click()
 
     def test_add_group(self):
         wd = self.wd
-        self.open_page(wd)
-        self.login(wd, username="admin", password="secret")
-        self.create_group(wd, Group(name="GR.NAME", header="GR.HEADER", footer="GR.FOOTER"))
-        self.logout(wd)
+        self.open_page()
+        self.login(username="admin", password="secret")
+        self.create_group(Group(name="GR.NAME", header="GR.HEADER", footer="GR.FOOTER"))
+        self.logout()
 
     def test_add_empty_group(self):
         wd = self.wd
-        self.open_page(wd)
-        self.login(wd, username="admin", password="secret")
-        self.create_group(wd, Group(name="", header="", footer=""))
-        self.logout(wd)
+        self.open_page()
+        self.login(username="admin", password="secret")
+        self.create_group(Group(name="", header="", footer=""))
+        self.logout()
 
-    def create_group(self, wd, group):
+    def create_group(self, group):
+        wd = self.wd
         wd.find_element(By.LINK_TEXT, "groups").click()
         wd.find_element(By.NAME, "new").click()
         wd.find_element(By.NAME, "group_name").send_keys(group.name)
