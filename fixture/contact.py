@@ -7,11 +7,12 @@ class ContactHelper:
 
     def open_contacts_page(self):
         wd = self.app.wd
-        wd.find_element(By.LINK_TEXT, "home").click()
+        if not (wd.current_url.endswith("/") and len(wd.find_elements(By.NAME, "add")) > 0):
+            wd.find_element(By.LINK_TEXT, "home").click()
 
-    def return_to_contacts_page(self):
-        wd = self.app.wd
-        wd.find_element(By.LINK_TEXT, "home").click()
+    # def return_to_contacts_page(self):
+    #     wd = self.app.wd
+    #     wd.find_element(By.LINK_TEXT, "home").click()
 
     def create(self, contact):
         wd = self.app.wd
@@ -61,7 +62,8 @@ class ContactHelper:
         # submit deletion
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
-        self.return_to_contacts_page()
+        self.open_contacts_page()
+        #self.return_to_contacts_page()
 
     def modify_first_contact(self, contact):
         wd = self.app.wd
@@ -71,7 +73,8 @@ class ContactHelper:
         wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
         self.fill_contact(contact)
         wd.find_element(By.XPATH, "//div[@id='content']/form/input[22]").click()
-        self.return_to_contacts_page()
+        self.open_contacts_page()
+        #self.return_to_contacts_page()
 
     def count(self):
         wd = self.app.wd
