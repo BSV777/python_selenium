@@ -72,3 +72,8 @@ class ContactHelper:
         self.fill_contact(contact)
         wd.find_element(By.XPATH, "//div[@id='content']/form/input[22]").click()
         self.return_to_contacts_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_contacts_page()
+        return len(wd.find_elements(By.NAME, "selected[]"))

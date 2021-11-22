@@ -2,7 +2,9 @@ from model import Contact
 from model import ContactDate
 
 
-def test_modify_firsе_contact(app):
+def test_modify_first_contact(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="test"))
     app.contact.modify_first_contact(Contact(firstname="test", middlename="test", lastname="test",
                                              nickname="test", title="test", company="test",
                                              address="test", homephone="test", mobilephone="test",
