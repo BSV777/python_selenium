@@ -59,6 +59,9 @@ class ContactHelper:
             wd.find_element(By.NAME, field_name).send_keys(text)
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self):
         wd = self.app.wd
         self.open_contacts_page()
         # select first contact
@@ -71,6 +74,9 @@ class ContactHelper:
         self.contacts_cache = None
 
     def modify_first_contact(self, contact):
+        self.modify_contact_by_index(0, contact)
+
+    def modify_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_contacts_page()
         # select first group
