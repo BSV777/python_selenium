@@ -71,10 +71,14 @@ class ContactHelper:
         self.select_contact_by_index(index)
         # submit deletion
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
+        #!!!
+        wd.implicitly_wait(10)
         wd.switch_to.alert.accept()
         #self.open_contacts_page()
         self.return_to_contacts_page()
         self.contacts_cache = None
+        # !!!
+        wd.implicitly_wait(10)
 
     def modify_first_contact(self, contact):
         self.modify_contact_by_index(0, contact)
@@ -89,10 +93,13 @@ class ContactHelper:
         self.open_contacts_page()
         #self.return_to_contacts_page()
         self.contacts_cache = None
+        wd.implicitly_wait(3)
 
     def count(self):
         wd = self.app.wd
         self.open_contacts_page()
+        # !!!
+        wd.implicitly_wait(10)
         return len(wd.find_elements(By.NAME, "selected[]"))
 
     contacts_cache = None
