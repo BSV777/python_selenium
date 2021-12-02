@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
+from time import sleep
+
 
 class ContactHelper:
     def __init__(self, app):
@@ -10,10 +12,6 @@ class ContactHelper:
         wd = self.app.wd
         if not (wd.current_url.endswith("/") and len(wd.find_elements(By.NAME, "add")) > 0):
             wd.find_element(By.LINK_TEXT, "home").click()
-
-    def return_to_contacts_page(self):
-        wd = self.app.wd
-        wd.find_element(By.LINK_TEXT, "home").click()
 
     def create(self, contact):
         wd = self.app.wd
@@ -71,14 +69,11 @@ class ContactHelper:
         self.select_contact_by_index(index)
         # submit deletion
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
-        #!!!
-        wd.implicitly_wait(10)
         wd.switch_to.alert.accept()
-        #self.open_contacts_page()
-        self.return_to_contacts_page()
+        self.open_contacts_page()
         self.contacts_cache = None
         # !!!
-        wd.implicitly_wait(10)
+        sleep(1)
 
     def modify_first_contact(self, contact):
         self.modify_contact_by_index(0, contact)
@@ -91,15 +86,11 @@ class ContactHelper:
         self.fill_contact(contact)
         wd.find_element(By.XPATH, "//div[@id='content']/form/input[22]").click()
         self.open_contacts_page()
-        #self.return_to_contacts_page()
         self.contacts_cache = None
-        wd.implicitly_wait(3)
 
     def count(self):
         wd = self.app.wd
         self.open_contacts_page()
-        # !!!
-        wd.implicitly_wait(10)
         return len(wd.find_elements(By.NAME, "selected[]"))
 
     contacts_cache = None
