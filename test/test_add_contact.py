@@ -7,13 +7,13 @@ def test_add_contact(app):
     old_contacts = app.contact.get_contact_list()
 
     contact = Contact(firstname="test", middlename="test", lastname="test",
-                               nickname="test", title="test", company="test",
-                               address="test", homephone="test", mobilephone="test",
-                               workphone="test", fax="test", email="test", email2="test",
-                               email3="test", homepage="test",
-                               bdate=ContactDate(1, "January", 2001),
-                               adate=ContactDate(2, "February", 2002),
-                               address2="test", phone2="test", notes="test")
+                      nickname="test", title="test", company="test",
+                      address="test", homephone="123-456", mobilephone="(123)456",
+                      workphone="123 456", fax="test", email="test", email2="test",
+                      email3="test", homepage="test",
+                      bdate=ContactDate(1, "January", 2001),
+                      adate=ContactDate(2, "February", 2002),
+                      address2="test", secondaryphone="", notes="test")
     app.contact.create(contact)
     assert len(old_contacts) + 1 == app.contact.count()
     new_contacts = app.contact.get_contact_list()

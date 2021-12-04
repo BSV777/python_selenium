@@ -9,13 +9,13 @@ def test_modify_some_contact(app):
     old_contacts = app.contact.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(firstname="mod", middlename="mod", lastname="mod" + str(index),
-                                             nickname="test", title="test", company="test",
-                                             address="test", homephone="test", mobilephone="test",
-                                             workphone="test", fax="test", email="test", email2="test",
-                                             email3="test", homepage="test",
-                                             bdate=ContactDate(1, "January", 2001),
-                                             adate=ContactDate(2, "February", 2002),
-                                             address2="test", phone2="test", notes="test")
+                      nickname="test", title="test", company="test",
+                      address="test", homephone="test", mobilephone="test",
+                      workphone="test", fax="test", email="test", email2="test",
+                      email3="test", homepage="test",
+                      bdate=ContactDate(1, "January", 2001),
+                      adate=ContactDate(2, "February", 2002),
+                      address2="test", secondaryphone="test", notes="test")
     contact.id = old_contacts[index].id
     app.contact.modify_contact_by_index(index, contact)
     assert len(old_contacts) == app.contact.count()
