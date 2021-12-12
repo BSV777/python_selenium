@@ -1,0 +1,6 @@
+{
+  "baseUrl": "http://lab/addressbook/",
+  "username": "admin",
+  "password": "secret",
+  "browser": "chrome"
+}
