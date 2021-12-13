@@ -37,6 +37,7 @@ testdata = [Group(name="", header="", footer="")] + \
 #             for header in ["", random_string("header", 10)]
 #             for footer in ["", random_string("footer", 10)]]
 
+
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
 
 with open(file, "w") as out:
