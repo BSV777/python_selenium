@@ -1,12 +1,8 @@
-import pymysql.cursors
+import pymysql
 
+print(pymysql.__version__)
 
-connection = pymysql.connect(host="lab", port=3306, user="root", passwd="", db="addressbook")
-connection.autocommit(1)
-cursor = connection.cursor(pymysql.cursors.DictCursor)
-
-
-# connection = pymysql.connect(host="lab", database="addressbook", user="root", passwd="")
+connection = pymysql.connect(host="lab", database="addressbook", user="root", passwd="")
 # connection.autocommit(1)
 #
 # try:
