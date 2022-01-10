@@ -10,19 +10,19 @@
     "py/object": "model.group.Group",
     "name": "name",
     "header": "headerxzI ",
-    "footer": "footer'^` shs'|`]tze]",
+    "footer": "footer^ shs|]tze]",
     "id": null
   },
   {
     "py/object": "model.group.Group",
     "name": "nameif",
     "header": "header$T 8z\\P",
-    "footer": "footerV9F1>9o' Pra@U *\\Z",
+    "footer": "footerV9F1>9o Pra@U *\\Z",
     "id": null
   },
   {
     "py/object": "model.group.Group",
-    "name": "name}k#<",
+    "name": "name}k#",
     "header": "header ;H:+gCb",
     "footer": "footer",
     "id": null
@@ -31,7 +31,7 @@
     "py/object": "model.group.Group",
     "name": "nameUwJe",
     "header": "headerL{ t",
-    "footer": "footerA=TqE27U`VvAf",
+    "footer": "footerA=TqE27UVvAf",
     "id": null
   },
   {
@@ -39,41 +39,6 @@
     "name": "name]T>\" 3",
     "header": "headernW 2i6z}V _^H~NBM",
     "footer": "footer;tXz%MQsKNz+A",
-    "id": null
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "name@C",
-    "header": "header 9YPFN/ Q9o/ XZ$|",
-    "footer": "footer YnSU",
-    "id": null
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "name3 0:'7j",
-    "header": "header>JA(v",
-    "footer": "footerva",
-    "id": null
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "name",
-    "header": "headerm2~Be\"^In[xS{",
-    "footer": "footer. 'fKq1* 9MpC]xc(ov",
-    "id": null
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "namee h<",
-    "header": "headerU",
-    "footer": "footerO:_dE 6;Gp1i5!e {",
-    "id": null
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "namep0-9-K~",
-    "header": "header*sBF-^1tn_.}",
-    "footer": "footero)",
     "id": null
   }
 ]

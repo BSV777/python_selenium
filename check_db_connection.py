@@ -1,12 +1,15 @@
-import pymysql.cursors
+#import pymysql.cursors
 
-connection = pymysql.connect(host="lab", database="addressbook", user="root", password="")
+from fixture.db import DBFixture
+
+
+db = DBFixture(host="lab", name="addressbook", user="root", password="")
 
 try:
-    cursor = connection.cursor()
-    cursor.execute("select * from group_list")
-    for row in cursor.fetchall():
-        print(row)
+    contacts = db.get_contact_list()
+    for contact in contacts:
+        print(contact)
+    print(len(contacts))
 finally:
-    connection.close()
+    db.destroy()
 

@@ -64,10 +64,26 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements(By.NAME, "selected[]")[index].click()
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % id).click()
+
     def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.open_contacts_page()
         self.select_contact_by_index(index)
+        # submit deletion
+        wd.find_element(By.XPATH, "//input[@value='Delete']").click()
+        wd.switch_to.alert.accept()
+        self.open_contacts_page()
+        self.contact_cache = None
+        # !!!
+        sleep(1)
+
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.open_contacts_page()
+        self.select_contact_by_id(id)
         # submit deletion
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
@@ -90,10 +106,29 @@ class ContactHelper:
         self.open_contacts_page()
         self.contact_cache = None
 
+    def modify_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.open_contacts_page()
+        # self.select_contact_by_index(index)
+        # wd.find_elements(By.XPATH, "//img[@alt='Edit']")[index].click()
+        self.open_contact_to_edit_by_id(id)
+        self.fill_contact(contact)
+        wd.find_element(By.XPATH, "//div[@id='content']/form/input[22]").click()
+        self.open_contacts_page()
+        self.contact_cache = None
+
+
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         self.open_contacts_page()
         row = wd.find_elements(By.NAME, "entry")[index]
+        cell = row.find_elements(By.TAG_NAME, "td")[7]
+        cell.find_element(By.TAG_NAME, "a").click()
+
+    def open_contact_to_edit_by_id(self, id):
+        wd = self.app.wd
+        self.open_contacts_page()
+        row = wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % id)
         cell = row.find_elements(By.TAG_NAME, "td")[7]
         cell.find_element(By.TAG_NAME, "a").click()
 
