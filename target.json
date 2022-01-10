@@ -1,6 +1,14 @@
 {
-  "baseUrl": "http://lab/addressbook/",
-  "username": "admin",
-  "password": "secret",
-  "browser": "chrome"
+  "web": {
+    "baseUrl": "http://lab/addressbook/",
+    "username": "admin",
+    "password": "secret",
+    "browser": "chrome"
+  },
+  "db": {
+    "host": "lab",
+    "name": "addressbook",
+    "user": "root",
+    "password": ""
+  }
 }
