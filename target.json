@@ -3,7 +3,7 @@
     "baseUrl": "http://lab/addressbook/",
     "username": "admin",
     "password": "secret",
-    "browser": "chrome"
+    "browser": "firefox"
   },
   "db": {
     "host": "lab",

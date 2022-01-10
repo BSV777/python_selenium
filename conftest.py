@@ -9,7 +9,7 @@ from fixture.db import DBFixture
 fixture = None
 target = None
 
-def load_config(file)
+def load_config(file):
     global target
     if target is None:
         config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), file)
