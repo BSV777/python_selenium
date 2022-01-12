@@ -128,9 +128,7 @@ class ContactHelper:
     def open_contact_to_edit_by_id(self, id):
         wd = self.app.wd
         self.open_contacts_page()
-        row = wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % id)
-        cell = row.find_elements(By.TAG_NAME, "td")[7]
-        cell.find_element(By.TAG_NAME, "a").click()
+        wd.find_element(By.CSS_SELECTOR, "[href='edit.php?id=%s']" % id).click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
