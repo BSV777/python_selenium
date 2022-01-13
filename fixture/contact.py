@@ -198,3 +198,28 @@ class ContactHelper:
         secondaryphone = "" if secondaryphone is None else secondaryphone.group(1)
         return Contact(homephone=homephone, mobilephone=mobilephone,
                        workphone=workphone, secondaryphone=secondaryphone)
+
+    def add_contact_to_group_by_id(self, id):
+        wd = self.app.wd
+        Select(wd.find_element(By.NAME, "to_group")).select_by_value(id)
+        wd.find_element(By.XPATH, "//input[@value='Add to']").click()
+
+    def add_contact_to_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contacts_page()
+        self.select_contact_by_id(contact_id)
+        self.add_contact_to_group_by_id(group_id)
+        self.open_contacts_page()
+        self.contact_cache = None
+
+    def remove_contact_from_group_by_id(self, id):
+        wd = self.app.wd
+        pass
+
+    def remove_contact_from_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contacts_page()
+        self.select_contact_by_id(contact_id)
+        self.remove_contact_from_group_by_id(group_id)
+        self.open_contacts_page()
+        self.contact_cache = None
