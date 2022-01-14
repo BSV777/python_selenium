@@ -14,9 +14,9 @@ def test_data_on_home_page(app, db):
         assert contacts_from_home_page[i].lastname == contact_from_db.lastname
         assert contacts_from_home_page[i].firstname == contact_from_db.firstname
         assert contacts_from_home_page[i].address == contact_from_db.address.strip()
-        # print("HP_email", clear_email(contacts_from_home_page[i].all_emails_from_home_page))
+        # print("HP_email", contacts_from_home_page[i].all_emails_from_home_page)
         # print("DB_email", merge_emails_like_on_homepage(contact_from_db))
-        assert clear_email(contacts_from_home_page[i].all_emails_from_home_page) == merge_emails_like_on_homepage(contact_from_db)
+        assert contacts_from_home_page[i].all_emails_from_home_page == merge_emails_like_on_homepage(contact_from_db)
         # print("HP_phone", clear_phone(contacts_from_home_page[i].all_phones_from_home_page))
         # print("DB_phone", merge_phones_like_on_homepage(contact_from_db))
         assert clear_phone(contacts_from_home_page[i].all_phones_from_home_page) == merge_phones_like_on_homepage(contact_from_db)
@@ -40,12 +40,11 @@ def test_data_on_home_page(app, db):
 
 
 def clear_phone(s):
-    reg = re.compile('[^a-zA-Z0-9\n]')
+    reg = re.compile('[^a-zA-Z0-9+\n]')
     return reg.sub('', s)
 
 def clear_email(s):
-    reg = re.compile('[^a-zA-Z0-9@\n]')
-    return reg.sub('', s)
+    return s.strip()
 
 def merge_phones_like_on_homepage(contact):
     return "\n".join(filter(lambda x: x != "",
