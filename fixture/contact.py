@@ -212,14 +212,15 @@ class ContactHelper:
         self.open_contacts_page()
         self.contact_cache = None
 
-    def remove_contact_from_group_by_id(self, id):
+    def remove_contact_from_group_by_id(self, contact_id, group_id):
         wd = self.app.wd
-        pass
+        Select(wd.find_element(By.NAME, "group")).select_by_value(group_id)
+        self.select_contact_by_id(contact_id)
+        wd.find_element(By.NAME, "remove").click()
 
     def remove_contact_from_group(self, contact_id, group_id):
         wd = self.app.wd
         self.open_contacts_page()
-        self.select_contact_by_id(contact_id)
-        self.remove_contact_from_group_by_id(group_id)
+        self.remove_contact_from_group_by_id(contact_id, group_id)
         self.open_contacts_page()
         self.contact_cache = None
