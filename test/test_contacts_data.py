@@ -24,10 +24,12 @@ def test_phones_on_view_page(app):
 
 
 def clear_phone(s):
-    return re.sub("[() -]/.", "", s)
+    reg = re.compile('[^a-zA-Z0-9+\n]')
+    return reg.sub('', s)
+
 
 def clear_email(s):
-    return re.sub("[()]", "", s)
+    return s.strip()
 
 def merge_phones_like_on_homepage(contact):
     return "\n".join(filter(lambda x: x != "",
