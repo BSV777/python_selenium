@@ -13,6 +13,12 @@ def test_add_contact_to_group(app, db, orm):
         app.contact.create(Contact(firstname="test"))
 
     contacts = orm.get_contacts_not_in_group(group)
+    if len(contacts) == 0:
+        contacts = orm.get_contacts_in_group(group)
+        contact = random.choice(contacts)
+        app.contact.remove_contact_from_group(contact.id, group.id)
+        contacts = orm.get_contacts_not_in_group(group)
+
     contact = random.choice(contacts)
 
     app.contact.add_contact_to_group(contact.id, group.id)
