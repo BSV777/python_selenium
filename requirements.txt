@@ -4,7 +4,6 @@ selenium
 jsonpickle
 pony
 pymysql
-lxml-4.6.5-cp39-cp39-win_amd64.whl
-pytest-allure-adaptor
+lxml
 allure-pytest
-
+pytest-allure-adaptor

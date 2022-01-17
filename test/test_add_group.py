@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from model import Group
-import allure
+
 #import pytest
 #from data.add_group import testdata
 #from data.groups import constant as testdata
@@ -9,7 +9,7 @@ import allure
 #@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
 #def test_add_group(app, group):
 
-@allure.severity(allure.severity_level.MINOR)
+
 def test_add_group(app, db, json_groups, check_ui):
     group = json_groups
     old_groups = db.get_group_list()
