@@ -13,6 +13,7 @@ class ContactHelper:
         wd = self.app.wd
         if not (wd.current_url.endswith("/") and len(wd.find_elements(By.NAME, "add")) > 0):
             wd.find_element(By.LINK_TEXT, "home").click()
+        Select(wd.find_element(By.NAME, "group")).select_by_value("")
 
     def create(self, contact):
         wd = self.app.wd

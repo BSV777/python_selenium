@@ -1,12 +1,12 @@
 {
   "web": {
-    "baseUrl": "http://lab/addressbook/",
+    "baseUrl": "http://localhost/addressbook/",
     "username": "admin",
     "password": "secret",
     "browser": "firefox"
   },
   "db": {
-    "host": "lab",
+    "host": "localhost",
     "name": "addressbook",
     "user": "root",
     "password": ""

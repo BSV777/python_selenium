@@ -4,7 +4,7 @@ import random
 
 
 def test_add_contact_to_group(app, db, orm):
-    if len(db.get_group_list()) == 0:
+    if len(orm.get_group_list()) == 0:
         app.group.create(Group(name="test"))
     groups = orm.get_group_list()
     group = random.choice(groups)
@@ -13,6 +13,7 @@ def test_add_contact_to_group(app, db, orm):
         app.contact.create(Contact(firstname="test"))
 
     contacts = orm.get_contacts_not_in_group(group)
+
     if len(contacts) == 0:
         contacts = orm.get_contacts_in_group(group)
         contact = random.choice(contacts)

@@ -4,7 +4,7 @@ from fixture.orm import ORMFixture
 from model.group import Group
 
 
-db = ORMFixture(host="lab", name="addressbook", user="root", password="")
+db = ORMFixture(host="localhost", name="addressbook", user="root", password="")
 
 try:
     l = db.get_contacts_not_in_group(Group(id="197"))

@@ -6,4 +6,3 @@ pony
 pymysql
 lxml
 allure-pytest
-pytest-allure-adaptor
